@@ -27,7 +27,7 @@ export const CallToAction = () => {
           <input
             type="email"
             placeholder="your@email.com"
-            className="flex-1 h-12 bg-white/20 rounded-lg px-5 font-medium placeholder:text-[#9CA3AF]"
+            className="sm:flex-1 h-12 bg-white/20 rounded-lg px-5 font-medium placeholder:text-[#9CA3AF]"
           />
           <button className="bg-white text-black h-12 rounded-lg px-5">
             Get access
