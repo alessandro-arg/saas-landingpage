@@ -4,7 +4,7 @@ import appScreen from "../assets/images/app-screen.png";
 export const ProductShowcase = () => {
   return (
     <div className="bg-black text-white bg-gradient-to-b from-black to-[#5D2CA8] py-[72px] sm:py-24">
-      <div className="container">
+      <div className="container flex flex-col justify-center">
         <h2 className="text-center text-5xl sm:text-6xl font-bold tracking-tighter">
           Intuitive interface
         </h2>
@@ -15,7 +15,11 @@ export const ProductShowcase = () => {
             one task at a time.
           </p>
         </div>
-        <Image src={appScreen} alt="Product screenshot" className="mt-14" />
+        <Image
+          src={appScreen}
+          alt="Product screenshot"
+          className="mt-14 self-center"
+        />
       </div>
     </div>
   );
