@@ -4,6 +4,7 @@ import React from "react";
 import PlusIcon from "../assets/icons/plus.svg";
 import MinusIcon from "../assets/icons/minus.svg";
 import clsx from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
   {
@@ -45,14 +46,29 @@ const AccordionItem = ({
         <span className="flex-1 text-lg font-bold">{question}</span>
         {isOpen ? <MinusIcon /> : <PlusIcon />}
       </div>
-      <div
-        className={clsx("mt-4", {
-          hidden: !isOpen,
-          "": isOpen === true,
-        })}
-      >
-        {answer}
-      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              height: 0,
+              marginTop: 0,
+            }}
+            animate={{
+              opacity: 1,
+              height: "auto",
+              marginTop: "16px",
+            }}
+            exit={{
+              opacity: 0,
+              height: 0,
+              marginTop: 0,
+            }}
+          >
+            {answer}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -64,7 +80,7 @@ export const FAQs = () => {
         <h2 className="text-center text-5xl sm:text-6xl sm:max-w-2xl mx-auto font-bold tracking-tighter">
           Frequently asked questions
         </h2>
-        <div className="mt-12 max-w-2xl mx-auto">
+        <div className="mt-12 max-w-2xl mx-auto cursor-pointer">
           {items.map(({ question, answer }) => (
             <AccordionItem question={question} answer={answer} key={question} />
           ))}
